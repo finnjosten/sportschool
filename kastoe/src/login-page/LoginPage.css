@@ -1,150 +1,128 @@
-/* filepath: c:\hackaton\sportschool\kastoe\src\login-page\LoginPage.css */
-.login-page-background {
-  /* Make sure to add a background image to your assets folder */
-  background-image: url('../assets/images/gymBackground.png');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.login-form-container {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2rem 3rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+h2 { font-weight: bolder; }
+
+button, .btn {
+    padding: 8px 16px;
+    border: 1px solid #F76B2A;
+    background-color: #F76B2A;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s, border 0.3s;
+}
+:is(button, .btn):hover {
+    background-color: #cb531b;
+    border-color: #cb531b;
 }
 
-.login-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.logo-image {
-  width: 150px; /* Adjust size as needed */
-  margin-bottom: 2rem;
-}
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem; /* Adds space between the buttons */
-  width: 100%;
-}
-h2{
-  font-weight: bolder;
-}
-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  color: #F76B2A;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex-grow: 1; /* Makes buttons take up equal space */
-  border: #F76B2A 2px solid;
-}
 
-button:hover {
-  background-color: #0056b3;
-}
+
+
+
+.page.page--login { background-image: url('../assets/images/gymBackground.png'); background-size: cover; background-position: center; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; }
+
+.card--login { background-color: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); width: fit-content; max-width: 420px; display: flex; flex-direction: column; align-items: center; }
+.card--login .logo { width: 210px; margin-bottom: 32px; }
+.card--login .btn-group { display: flex; justify-content: center; gap: 16px; width: 100%; }
+.card--login .auto-scan { margin-bottom: 32px; font-size: 32px; color: #000; text-align: center; }
+
+
+
+
 
 /* Modal Styles */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .pin-display {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.5rem;
-  letter-spacing: 0.5rem;
-  margin: 1rem 0;
-  min-height: 50px;
-  color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.75rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    margin: 1rem 0;
+    min-height: 50px;
+    color: #333;
 }
 
 .keypad-body {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .keypad-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
 }
 
 .keypad-button {
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .keypad-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
 }
 
 .action-button {
-  width: 100px;
-  height: 100%;
-  flex-grow: 1;
+    width: 100px;
+    height: 100%;
+    flex-grow: 1;
 }
 
 .action-button.confirm {
-  background-color: lightgray;
+    background-color: lightgray;
 }
 
 .action-button.confirm:hover {
-  background-color: #218838;
-  display: flex;
-  align-items: center;
-  justify-self: center;
+    background-color: #218838;
+    display: flex;
+    align-items: center;
+    justify-self: center;
 }
 
 .action-button.cancel {
-  background-color: lightgray;
-  display: flex;
-  align-items: center;
-  justify-self: center;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-self: center;
 }
 
 .action-button.cancel:hover {
-  background-color: #c82333;
+    background-color: #c82333;
 }
