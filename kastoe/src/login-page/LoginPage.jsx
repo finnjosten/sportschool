@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./LoginPage.css";
 import logo from "../assets/images/Logo.png"; // Make sure Logo.png is in your src/assets folder
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { IoCheckmarkOutline } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 function LoginPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,11 +64,17 @@ function LoginPage() {
                 ))}
               </div>
               <div className="keypad-actions">
-                <button onClick={handlePinConfirm} className="action-button confirm">
-                Bevestig
+                <button
+                  onClick={handlePinConfirm}
+                  className="action-button confirm"
+                >
+                  <IoCheckmarkOutline size={54} />
                 </button>
-                <button onClick={handleCloseModal} className="action-button cancel">
-                  <FontAwesomeIcon icon={faXmark} />
+                <button
+                  onClick={handleCloseModal}
+                  className="action-button cancel"
+                >
+                  <IoClose size={54} />
                 </button>
               </div>
             </div>
