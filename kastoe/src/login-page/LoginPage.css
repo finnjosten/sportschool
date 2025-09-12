@@ -110,19 +110,15 @@ button, .btn {
 }
 
 .action-button.confirm:hover {
-    background-color: #218838;
-    display: flex;
-    align-items: center;
-    justify-self: center;
+  background-color: #76ff93;
+
 }
 
 .action-button.cancel {
-    background-color: lightgray;
-    display: flex;
-    align-items: center;
-    justify-self: center;
+  background-color: lightgray;
+
 }
 
 .action-button.cancel:hover {
-    background-color: #c82333;
+  background-color: #ff7683;
 }
