@@ -13,10 +13,6 @@ function LoginPage() {
     setPin(""); // Reset PIN when opening
   };
 
-  const handleConfirmClick = () => {
-    alert("Bevestig clicked");
-  };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -40,7 +36,6 @@ function LoginPage() {
 
             <div className="button-container">
               <button onClick={handleManualClick}>Handmatig</button>
-              <button onClick={handleConfirmClick}>Bevestig</button>
             </div>
           </div>
         </div>
