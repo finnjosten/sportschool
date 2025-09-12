@@ -1,32 +1,3 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-h2 { font-weight: bolder; }
-
-button, .btn {
-    padding: 8px 16px;
-    border: 1px solid #F76B2A;
-    background-color: #F76B2A;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    transition: background 0.3s, border 0.3s;
-}
-:is(button, .btn):hover {
-    background-color: #cb531b;
-    border-color: #cb531b;
-}
-
-
-
-
-
-
-
 .page.page--login { background-image: url('../assets/images/gymBackground.png'); background-size: cover; background-position: center; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; }
 
 .card--login { background-color: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); width: fit-content; max-width: 420px; display: flex; flex-direction: column; align-items: center; }
