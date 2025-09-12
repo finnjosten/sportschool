@@ -1,30 +1,52 @@
 import { useState } from "react";
 import "./LoginPage.css";
 import logo from "../assets/images/Logo.svg";
-import { IoCheckmarkOutline } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa";
+import { FaDeleteLeft } from "react-icons/fa6";
+import { FaXmark } from "react-icons/fa6";
 
 function LoginPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [pin, setPin] = useState("");
 
-  const handleManualClick = () => {
-    setIsModalOpen(true);
-    setPin(""); // Reset PIN when opening
-  };
+    const handleManualClick = () => {
+        setIsModalOpen(true);
+        setPin(""); // Reset PIN when opening
+    };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
 
     const handlePinButtonClick = (number) => {
-        setPin((prevPin) => prevPin + number);
+        if (pin.length >= 9 && !pin.includes('.')) return;
+
+        let newPin = pin.replace(/\./g, '');
+        newPin += number;
+        newPin = fillWhiteSpaces(newPin, 9);
+        setPin(newPin);
     };
 
     const handlePinConfirm = () => {
+        if (pin.includes('.')) {
+            alert("Please enter a complete PIN.");
+            return;
+        }
+
         alert(`PIN confirmed: ${pin}`);
         handleCloseModal();
     };
+
+    const handlePinDelete = () => {
+        let newPin = pin.replace(/\./g, '');
+        newPin = newPin.slice(0, -1);
+        newPin = fillWhiteSpaces(newPin, 9);
+        setPin(newPin);
+    };
+
+    const fillWhiteSpaces = (str, length) => {
+        return str.padEnd(length, ".");
+    }
 
     return (
         <>
@@ -40,43 +62,43 @@ function LoginPage() {
                 </div>
             </div>
 
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Voer uw code in</h3>
-            <div className="pin-display">{pin || "..."}</div>
-            <div className="keypad-body">
-              <div className="keypad-grid">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
-                  <button
-                    key={number}
-                    className="keypad-button"
-                    onClick={() => handlePinButtonClick(number)}
-                  >
-                    {number}
-                  </button>
-                ))}
-              </div>
-              <div className="keypad-actions">
-                <button
-                  onClick={handlePinConfirm}
-                  className="action-button confirm"
-                >
-                  <IoCheckmarkOutline size={54} />
-                </button>
-                <button
-                  onClick={handleCloseModal}
-                  className="action-button cancel"
-                >
-                  <IoClose size={54} />
-                </button>
-              </div>
+            <div className={`modal-overlay ${isModalOpen ? "--active" : ""}`}>
+                <div className="modal">
+                    <div className="keypad">
+                        <div className="keypad__header">
+                            <input className="pass-number" value={pin || "........."} readOnly />
+                        </div>
+
+                        <div className="keyboard">
+                            <div className="keyboard__numbers">
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+                                    <button
+                                        key={number}
+                                        className="keyboard__number"
+                                        onClick={() => handlePinButtonClick(number)}
+                                    >
+                                        {number}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="keyboard__actions">
+                                <button className="keyboard__action" onClick={handlePinDelete}>
+                                    <FaDeleteLeft size={32} />
+                                </button>
+                                <button className="keyboard__action" onClick={handlePinConfirm}>
+                                    <FaCheck size={32} />
+                                </button>
+                                <button className="keyboard__action" onClick={handleCloseModal}>
+                                    <FaXmark size={32} />
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
+        </>
+    );
 }
 
 export default LoginPage;
