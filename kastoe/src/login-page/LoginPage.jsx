@@ -35,7 +35,6 @@ function LoginPage() {
                     <h2 className="auto-scan">Scan uw pas</h2>
                     <div className="btn-group">
                         <button className="btn btn--secondary" onClick={handleManualClick}>Handmatig</button>
-                        <button className="btn btn--primary" onClick={handleConfirmClick}>Bevestig</button>
                     </div>
 
                 </div>
