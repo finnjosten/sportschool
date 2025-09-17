@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+:root {
+    --accent: #e85d04;
+    --bg: #fff;
+    --bg-dark: #EAEAEA;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,8 +40,8 @@ p, a, li, span, div, input, textarea, select, button, label {
 
 button, .btn {
     padding: 8px 16px;
-    border: 1px solid #F76B2A;
-    background-color: #F76B2A;
+    border: 1px solid var(--accent);
+    background-color: var(--accent);
     border-radius: 8px;
     color: #fff;
     font-size: 24px;
