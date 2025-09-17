@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Add this import
 import "./LoginPage.css";
 import logo from "../assets/images/Logo.svg";
 import { IoCheckmarkOutline, IoClose } from "react-icons/io5";
@@ -9,13 +10,14 @@ import { FaXmark } from "react-icons/fa6";
 function LoginPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [pin, setPin] = useState("");
+    const navigate = useNavigate(); // Add this line
 
-const handleManualClick = () => {
-    setIsModalOpen(true);
-    setPin(""); // Reset PIN when opening
-};
+    const handleManualClick = () => {
+        setIsModalOpen(true);
+        setPin(""); // Reset PIN when opening
+    };
 
-  const handleCloseModal = () => setIsModalOpen(false);
+    const handleCloseModal = () => setIsModalOpen(false);
 
     const handlePinButtonClick = (number) => {
         if (pin.length >= 9 && !pin.includes('.')) return;
@@ -32,7 +34,8 @@ const handleManualClick = () => {
             return;
         }
 
-        alert(`PIN confirmed: ${pin}`);
+        // Redirect to accountbeheer page
+        navigate("/accountbeheer"); // Add this line
         handleCloseModal();
     };
 

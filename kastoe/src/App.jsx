@@ -1,3 +1,4 @@
+// Example setup
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./login-page/LoginPage";
 import AccountBeheer from "./account_beheer/accountbeheer";
@@ -7,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/account" element={<AccountBeheer />} />
+        <Route path="/accountbeheer" element={<AccountBeheer />} />
       </Routes>
     </BrowserRouter>
   );
