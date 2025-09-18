@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./accountPage.css";
 import CursusPopup from "../popups/CursusPopup";
 import TrainerPopup from "../popups/TrainerPopup";
+import LogoutPopup from "../Popups/LogoutPopup";
+import EndSubPopup from "../Popups/EndSubPopup";
 
 import { FaXmark } from "react-icons/fa6";
 import { FaArrowUp, FaArrowDown, FaCheck, FaSignOutAlt, FaPaperPlane, FaPlus  } from "react-icons/fa";
@@ -56,12 +58,7 @@ function TrainerCard({ title, items, onOpenPopup }) {
     );
 }
 
-function AccountCard({ title, items }) {
-    const handleAccountAction = (item) => {
-        // Call your accountPopup logic here
-        console.log("Account action for:", item);
-    };
-
+function AccountCard({ title, items, onAccountAction }) {
     return (
         <div className="card card--account">
             <h3 className="card__title">{title}</h3>
@@ -74,7 +71,7 @@ function AccountCard({ title, items }) {
                         </div>
                         <div className="card__footer">
                             <span className="icon-wrapper"
-                            onClick={() => handleAccountAction(item)}>
+                            onClick={() => onAccountAction(item)}>
                                 <item.icon size={iconSize} />
                             </span>
                         </div>
@@ -88,6 +85,9 @@ function AccountCard({ title, items }) {
 function AccountPage() {
     const [cursusPopupOpen, setCursusPopupOpen] = useState(false);
     const [selectedCursus, setSelectedCursus] = useState(null);
+
+    const [logoutPopupOpen, setLogoutPopupOpen] = useState(false);
+    const [endSubPopupOpen, setEndSubPopupOpen] = useState(false);
 
     const [trainerPopupOpen, setTrainerPopupOpen] = useState(false);
     const [selectedTrainer, setSelectedTrainer] = useState(null);
@@ -127,6 +127,21 @@ function AccountPage() {
     ];
 
     // Handlers for popups
+
+        const handleAccountAction = (item) => {
+        if (item.title === "Uitloggen") {
+            setLogoutPopupOpen(true);
+        } else if (item.title === "Abonnement annuleren") {
+            setEndSubPopupOpen(true);
+        }
+        };
+        // ...existing code...
+        <AccountCard
+            title="Abonnement beheer"
+            items={accountOptions}
+            onAccountAction={handleAccountAction}
+        />
+
     const handleOpenCursusPopup = (item) => {
         setSelectedCursus(item);
         setCursusPopupOpen(true);
@@ -179,8 +194,9 @@ function AccountPage() {
                             onOpenPopup={handleOpenTrainerPopup}
                         />
                         <AccountCard
-                            title="Abonnement beheer"
-                            items={accountOptions}
+                        title="Abonnement beheer"
+                        items={accountOptions}
+                        onAccountAction={handleAccountAction}
                         />
                     </div>
                 </div>
@@ -198,6 +214,24 @@ function AccountPage() {
                 trainer={selectedTrainer}
                 state={trainerPopupState}
                 onRequest={handleRequestTrainer}
+            />
+            <LogoutPopup
+            open={logoutPopupOpen}
+            onClose={() => setLogoutPopupOpen(false)}
+            onLogout={() => {
+                setLogoutPopupOpen(false);
+                // Add logout logic here
+                alert("Je bent uitgelogd!");
+            }}
+            />
+            <EndSubPopup
+                open={endSubPopupOpen}
+                onClose={() => setEndSubPopupOpen(false)}
+                onEnd={() => {
+                    setEndSubPopupOpen(false);
+                    // Add subscription end logic here
+                    alert("Je abonnement is geannuleerd!");
+                }}
             />
         </>
     );
