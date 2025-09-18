@@ -7,7 +7,7 @@ const iconSize = 16;
 
 function CursusCard({ title, items }) {
     return (
-        <div className="card card--col card--col-cursus">
+        <div className="card card--account card--cursus">
             <h3 className="card__title">{title}</h3>
             <div className="card__items">
                 {items?.map((item, idx) => (
@@ -30,7 +30,7 @@ function CursusCard({ title, items }) {
 
 function TrainerCard({ title, items }) {
     return (
-        <div className="card card--col card--col-trainer">
+        <div className="card card--account card--trainer">
             <h3 className="card__title">{title}</h3>
             <div className="card__items">
                 {items?.map((item, idx) => (
@@ -53,7 +53,7 @@ function TrainerCard({ title, items }) {
 
 function AccountCard({ title, items }) {
     return (
-        <div className="card card--col card--col-trainer">
+        <div className="card card--account">
             <h3 className="card__title">{title}</h3>
             <div className="card__items">
                 {items?.map((item, idx) => (
