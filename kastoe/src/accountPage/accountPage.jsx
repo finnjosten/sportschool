@@ -173,7 +173,7 @@ function AccountPage() {
                             items={cursusOptions}
                             onOpenPopup={handleOpenCursusPopup}
                         />
-                        <trainerCard
+                        <TrainerCard
                             title="Contact met trainer"
                             items={trainerOptions}
                             onOpenPopup={handleOpenTrainerPopup}
