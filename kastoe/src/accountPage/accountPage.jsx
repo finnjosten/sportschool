@@ -1,4 +1,4 @@
-import "./account.css";
+import "./accountPage.css";
 
 function Rectangle({ title, boxes }) {
   return (
@@ -13,7 +13,7 @@ function Rectangle({ title, boxes }) {
   );
 }
 
-function AccountBeheer() {
+function AccountPage() {
   return (
     <div className="login-page-background">
       <div className="rectangle-row">
@@ -25,4 +25,4 @@ function AccountBeheer() {
   );
 }
 
-export default AccountBeheer;
+export default AccountPage;
