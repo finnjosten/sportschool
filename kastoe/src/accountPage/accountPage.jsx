@@ -3,20 +3,28 @@ import "./accountPage.css";
 import CursusPopup from "../popups/CursusPopup";
 import TrainerPopup from "../popups/TrainerPopup";
 
+import { FaXmark } from "react-icons/fa6";
+import { FaArrowUp, FaArrowDown, FaCheck, FaSignOutAlt, FaPaperPlane, FaPlus  } from "react-icons/fa";
+
+const iconSize = 16;
+
 function CursusCard({ title, items, onOpenPopup }) {
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-cursus">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--account card--cursus">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>
-                        {item.title}
-                        <button
-                            className="wpb-card__button"
-                            onClick={() => onOpenPopup(item)}
-                        >
-                            Meer info
-                        </button>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper"
+                            onClick={() => onOpenPopup(item)}>
+                                <FaPlus size={iconSize} />
+                            </span>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -26,18 +34,21 @@ function CursusCard({ title, items, onOpenPopup }) {
 
 function TrainerCard({ title, items, onOpenPopup }) {
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-trainer">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--account card--trainer">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>
-                        {item.title}
-                        <button
-                            className="wpb-card__button"
-                            onClick={() => onOpenPopup(item)}
-                        >
-                            Contact
-                        </button>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper"
+                            onClick={() => onOpenPopup(item)}>
+                                <FaPaperPlane size={iconSize} />
+                            </span>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -52,18 +63,21 @@ function AccountCard({ title, items }) {
     };
 
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-trainer">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--account">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>
-                        {item.title}
-                        <button
-                            className="wpb-card__button"
-                            onClick={() => handleAccountAction(item)}
-                        >
-                            Uitvoeren
-                        </button>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper"
+                            onClick={() => handleAccountAction(item)}>
+                                <item.icon size={iconSize} />
+                            </span>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -90,10 +104,26 @@ function AccountPage() {
         { title: "Mike Brown", description: "Personal trainer specialized in cardio" }
     ];
     const accountOptions = [
-        { title: "Verhoog abonnement", description: "Verhoog je abonnement naar niveau {niveau}" },
-        { title: "Verlaag abonnement", description: "Verlaag je abonnement naar niveau {niveau}" },
-        { title: "Abonnement annuleren", description: "Annuleer makkelijk je abonnement met de knop" },
-        { title: "Uitloggen", description: "Loguit van je account beheer" }
+        {
+            title: "Verhoog abonnement",
+            description: "Verhoog je abonnement naar niveau {niveau}",
+            icon: FaArrowUp
+        },
+        {
+            title: "Verlaag abonnement",
+            description: "Verlaag je abonnement naar niveau {niveau}",
+            icon: FaArrowDown
+        },
+        {
+            title: "Abonnement annuleren",
+            description: "Annuleer makkelijk je abonnement met de knop",
+            icon: FaXmark
+        },
+        {
+            title: "Uitloggen",
+            description: "Loguit van je account beheer",
+            icon: FaSignOutAlt
+        }
     ];
 
     // Handlers for popups
@@ -134,25 +164,28 @@ function AccountPage() {
     };
 
     return (
-        <div className="account-page-background">
-            <div className="container">
-                <div className="inner">
-                    <CursusCard
-                        title="Aanmelden voor cursus"
-                        items={cursusOptions}
-                        onOpenPopup={handleOpenCursusPopup}
-                    />
-                    <TrainerCard
-                        title="Contact met trainer"
-                        items={trainerOptions}
-                        onOpenPopup={handleOpenTrainerPopup}
-                    />
-                    <AccountCard
-                        title="Abonnement beheer"
-                        items={accountOptions}
-                    />
+        <>
+            <div className="page page--account">
+                <div className="container">
+                    <div className="inner">
+                        <CursusCard
+                            title="Aanmelden voor cursus"
+                            items={cursusOptions}
+                            onOpenPopup={handleOpenCursusPopup}
+                        />
+                        <trainerCard
+                            title="Contact met trainer"
+                            items={trainerOptions}
+                            onOpenPopup={handleOpenTrainerPopup}
+                        />
+                        <AccountCard
+                            title="Abonnement beheer"
+                            items={accountOptions}
+                        />
+                    </div>
                 </div>
             </div>
+            <div className="page-bg"></div>
             <CursusPopup
                 open={cursusPopupOpen}
                 onClose={handleCloseCursusPopup}
@@ -166,7 +199,7 @@ function AccountPage() {
                 state={trainerPopupState}
                 onRequest={handleRequestTrainer}
             />
-        </div>
+        </>
     );
 }
 
