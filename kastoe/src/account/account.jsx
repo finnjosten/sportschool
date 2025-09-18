@@ -1,4 +1,4 @@
-import "./accountbeheer.css";
+import "./account.css";
 
 function Rectangle({ title, boxes }) {
   return (

@@ -35,7 +35,7 @@ function LoginPage() {
         }
 
         // Redirect to accountbeheer page
-        navigate("/accountbeheer"); // Add this line
+        navigate("/account"); // Add this line
         handleCloseModal();
     };
 

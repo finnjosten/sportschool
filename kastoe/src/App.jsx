@@ -1,14 +1,14 @@
 // Example setup
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./login-page/LoginPage";
-import AccountBeheer from "./account_beheer/accountbeheer";
+import Account from "./account/account.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/accountbeheer" element={<AccountBeheer />} />
+        <Route path="/account" element={<Account/>} />
       </Routes>
     </BrowserRouter>
   );
