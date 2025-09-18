@@ -1,12 +1,27 @@
 import "./accountPage.css";
 
+import { FaXmark } from "react-icons/fa6";
+import { FaArrowUp, FaArrowDown, FaCheck, FaSignOutAlt, FaPaperPlane, FaPlus  } from "react-icons/fa";
+
+const iconSize = 16;
+
 function CursusCard({ title, items }) {
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-cursus">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--col card--col-cursus">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>{item.title}</div>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper">
+                                <FaPlus size={iconSize} />
+                            </span>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
@@ -15,11 +30,21 @@ function CursusCard({ title, items }) {
 
 function TrainerCard({ title, items }) {
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-trainer">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--col card--col-trainer">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>{item.title}</div>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper">
+                                <FaPaperPlane size={iconSize} />
+                            </span>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
@@ -28,11 +53,21 @@ function TrainerCard({ title, items }) {
 
 function AccountCard({ title, items }) {
     return (
-        <div className="wpb-card wpb-card--col wpb-card--col-trainer">
-            <h3 className="wpb-card__title">{title}</h3>
-            <div className="wpb-card__boxes">
+        <div className="card card--col card--col-trainer">
+            <h3 className="card__title">{title}</h3>
+            <div className="card__items">
                 {items?.map((item, idx) => (
-                    <div className="wpb-card wpb-card--box" key={idx}>{item.title}</div>
+                    <div className="card card--box" key={idx}>
+                        <div className="card__body">
+                            <p className="card__title">{item.title}</p>
+                            <p className="card__description">{item.description}</p>
+                        </div>
+                        <div className="card__footer">
+                            <span className="icon-wrapper">
+                                <item.icon size={iconSize} />
+                            </span>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
@@ -107,32 +142,39 @@ function AccountPage() {
     const accountOptions = [
         {
             title: "Verhoog abonnement",
-            description: "Verhoog je abonnement naar niveau {niveau}"
+            description: "Verhoog je abonnement naar niveau {niveau}",
+            icon: FaArrowUp
         },
         {
             title: "Verlaag abonnement",
-            description: "Verlaag je abonnement naar niveau {niveau}"
+            description: "Verlaag je abonnement naar niveau {niveau}",
+            icon: FaArrowDown
         },
         {
             title: "Abonnement annuleren",
-            description: "Annuleer makkelijk je abonnement met de knop"
+            description: "Annuleer makkelijk je abonnement met de knop",
+            icon: FaXmark
         },
         {
             title: "Uitloggen",
-            description: "Loguit van je account beheer"
+            description: "Loguit van je account beheer",
+            icon: FaSignOutAlt
         }
     ];
 
     return (
-        <div className="account-page-background">
-            <div className="container">
-                <div className="inner">
-                    <CursusCard title="Aanmelden voor cursus" items={cursusOptions} />
-                    <TrainerCard title="Contact met trainer" items={trainerOptions} />
-                    <AccountCard title="Abonnement beheer" items={accountOptions} />
+        <>
+            <div className="page page--account">
+                <div className="container">
+                    <div className="inner">
+                        <CursusCard title="Aanmelden voor cursus" items={cursusOptions} />
+                        <TrainerCard title="Contact met trainer" items={trainerOptions} />
+                        <AccountCard title="Abonnement beheer" items={accountOptions} />
+                    </div>
                 </div>
             </div>
-        </div>
+            <div className="page-bg"></div>
+        </>
     );
 }
 

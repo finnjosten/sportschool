@@ -64,6 +64,8 @@ function LoginPage() {
                 </div>
             </div>
 
+            <div className="page-bg"></div>
+
             <div className={`modal-overlay ${isModalOpen ? "--active" : ""}`}>
                 <div className="modal">
                     <div className="keypad">
