@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Add this import
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import logo from "../assets/images/Logo.svg";
-import { IoCheckmarkOutline, IoClose } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { FaXmark } from "react-icons/fa6";
 
 function LoginPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [redirectModalOpen, setRedirectModalOpen] = useState(false);
     const [pin, setPin] = useState("");
     const navigate = useNavigate(); // Add this line
 
@@ -35,7 +35,7 @@ function LoginPage() {
         }
 
         // Redirect to accountbeheer page
-        navigate("/account"); // Add this line
+        setRedirectModalOpen(true);
         handleCloseModal();
     };
 
@@ -66,8 +66,8 @@ function LoginPage() {
 
             <div className="page-bg"></div>
 
-            <div className={`modal-overlay ${isModalOpen ? "--active" : ""}`}>
-                <div className="modal">
+            <div className={`modal--overlay ${isModalOpen ? "--active" : ""}`}>
+                <div className="modal modal--keypad">
                     <div className="keypad">
                         <div className="keypad__header">
                             <input className="pass-number" value={pin || "........."} readOnly />
@@ -98,6 +98,26 @@ function LoginPage() {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <div className={`modal--overlay ${redirectModalOpen ? "--active" : ""}`}>
+                <div className="modal">
+                    <div className="modal__body">
+                        <h2>Succesvol ingelogd</h2>
+                        <p>Wil je aanmelden of je account beheren?</p>
+                    </div>
+                    <div className="modal__footer">
+                        <button className="btn btn--primary" onClick={() => {
+                            setRedirectModalOpen(false);
+                            alert("Je bent aangemeld!");
+                        }}>Aanmelden</button>
+                        <button className="btn btn--secondary" onClick={() => {
+                            setRedirectModalOpen(false);
+                            alert("Hier zal normaal email auth plaats vinden");
+                            navigate("/account");
+                        }}>Account</button>
                     </div>
                 </div>
             </div>

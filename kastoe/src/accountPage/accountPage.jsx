@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./accountPage.css";
 import CursusPopup from "../popups/CursusPopup";
 import TrainerPopup from "../popups/TrainerPopup";
@@ -83,6 +84,7 @@ function AccountCard({ title, items, onAccountAction }) {
 }
 
 function AccountPage() {
+    const navigate = useNavigate(); // Add this line
     const [cursusPopupOpen, setCursusPopupOpen] = useState(false);
     const [selectedCursus, setSelectedCursus] = useState(null);
 
@@ -126,21 +128,19 @@ function AccountPage() {
         }
     ];
 
-    // Handlers for popups
+    const handleAccountAction = (item) => {
+    if (item.title === "Uitloggen") {
+        setLogoutPopupOpen(true);
+    } else if (item.title === "Abonnement annuleren") {
+        setEndSubPopupOpen(true);
+    }
+    };
 
-        const handleAccountAction = (item) => {
-        if (item.title === "Uitloggen") {
-            setLogoutPopupOpen(true);
-        } else if (item.title === "Abonnement annuleren") {
-            setEndSubPopupOpen(true);
-        }
-        };
-        // ...existing code...
-        <AccountCard
-            title="Abonnement beheer"
-            items={accountOptions}
-            onAccountAction={handleAccountAction}
-        />
+    <AccountCard
+        title="Abonnement beheer"
+        items={accountOptions}
+        onAccountAction={handleAccountAction}
+    />
 
     const handleOpenCursusPopup = (item) => {
         setSelectedCursus(item);
@@ -216,13 +216,13 @@ function AccountPage() {
                 onRequest={handleRequestTrainer}
             />
             <LogoutPopup
-            open={logoutPopupOpen}
-            onClose={() => setLogoutPopupOpen(false)}
-            onLogout={() => {
-                setLogoutPopupOpen(false);
-                // Add logout logic here
-                alert("Je bent uitgelogd!");
-            }}
+                open={logoutPopupOpen}
+                onClose={() => setLogoutPopupOpen(false)}
+                onLogout={() => {
+                    setLogoutPopupOpen(false);
+                    // Add logout logic here
+                    navigate("/");
+                }}
             />
             <EndSubPopup
                 open={endSubPopupOpen}
@@ -230,7 +230,7 @@ function AccountPage() {
                 onEnd={() => {
                     setEndSubPopupOpen(false);
                     // Add subscription end logic here
-                    alert("Je abonnement is geannuleerd!");
+                    navigate("/");
                 }}
             />
         </>

@@ -1,16 +1,16 @@
 import React from "react";
-import "./LogoutPopup.css";
 
 function LogoutPopup({ open, onClose, onLogout }) {
-    if (!open) return null;
     return (
-        <div className="popup-overlay">
-            <div className="popup-content">
-                <h2>Uitloggen</h2>
-                <p>Weet je zeker dat je wilt uitloggen?</p>
-                <div className="popup-actions">
-                    <button onClick={onLogout}>Uitloggen</button>
-                    <button onClick={onClose}>Annuleren</button>
+        <div className={`modal--overlay ${open ? "--active" : ""}`}>
+            <div className="modal">
+                <div className="modal__body">
+                    <h2>Uitloggen</h2>
+                    <p>Weet je zeker dat je wilt uitloggen?</p>
+                </div>
+                <div className="modal__footer">
+                    <button className="btn btn--primary" onClick={onLogout}>Uitloggen</button>
+                    <button className="btn btn--secondary" onClick={onClose}>Sluiten</button>
                 </div>
             </div>
         </div>

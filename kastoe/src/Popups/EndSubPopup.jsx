@@ -1,16 +1,16 @@
 import React from "react";
-import "./EndSubPopup.css";
 
 function EndSubPopup({ open, onClose, onEnd }) {
-    if (!open) return null;
     return (
-        <div className="popup-overlay">
-            <div className="popup-content">
-                <h2>Abonnement annuleren</h2>
-                <p>Weet je zeker dat je je abonnement wilt annuleren?</p>
-                <div className="popup-actions">
-                    <button onClick={onEnd}>Annuleren</button>
-                    <button onClick={onClose}>Terug</button>
+        <div className={`modal--overlay ${open ? "--active" : ""}`}>
+            <div className="modal">
+                <div className="modal__body">
+                    <h2>Abonnement annuleren</h2>
+                    <p>Weet je zeker dat je je abonnement wilt annuleren?</p>
+                </div>
+                <div className="modal__footer">
+                    <button className="btn btn--primary" onClick={onEnd}>Zeg stop</button>
+                    <button className="btn btn--secondary" onClick={onClose}>Sluiten</button>
                 </div>
             </div>
         </div>
